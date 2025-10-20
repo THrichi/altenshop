@@ -1,0 +1,27 @@
+<p-toast position="top-center" />
+
+<div class="wrapper">
+  <section class="card">
+    <h2>Contactez-nous</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" pInputText formControlName="email" placeholder="exemple@mail.com" />
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          pInputTextarea
+          formControlName="message"
+          placeholder="Votre message (max 300 caractères)"
+          rows="5"
+        ></textarea>
+      </div>
+
+      <p-button type="submit" label="Envoyer" icon="pi pi-send" severity="success" class="submit-btn" />
+    </form>
+  </section>
+</div>

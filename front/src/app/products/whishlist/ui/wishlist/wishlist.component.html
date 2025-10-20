@@ -1,0 +1,25 @@
+<h2 class="text-center mb-3">💖 Mes Favoris</h2>
+
+@if (wishlistService.items().length === 0) {
+  <p class="text-center text-gray-500">Aucun favori pour le moment.</p>
+} @else {
+  <div class="favorite-grid">
+    @for (item of wishlistService.items(); track item.productId) {
+      <p-card class="favorite-card">
+        <img
+          [src]="item.productImage"
+          [alt]="item.productName"
+          class="favorite-image"
+        />
+        <div class="font-semibold text-lg mt-2">{{ item.productName }}</div>
+        <div class="text-sm text-gray-600">{{ item.category }}</div>
+        <div class="text-sm font-medium mb-3">{{ item.price }} €</div>
+        <p-button
+          label="💔 Retirer"
+          severity="danger"
+          (onClick)="wishlistService.remove(item.productId).subscribe()"
+        />
+      </p-card>
+    }
+  </div>
+}

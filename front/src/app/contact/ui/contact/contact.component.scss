@@ -1,0 +1,111 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background: linear-gradient(180deg, #f3f4f6 0%, #ffffff 100%);
+    font-family: "Inter", sans-serif;
+  }
+  
+  .wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: fadeIn 0.4s ease;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 1.6rem;
+    color: #111827;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  
+    label {
+      color: #374151;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+  
+    input,
+    textarea {
+      width: 100%;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.6rem;
+      padding: 0.8rem 1rem;
+      background-color: #fafafa;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+  
+      &:focus {
+        border-color: #3b82f6;
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        outline: none;
+      }
+    }
+  }
+  
+  .submit-btn {
+    width: 100%;
+    font-weight: 600;
+    border-radius: 0.6rem !important;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  :host ::ng-deep .p-toast {
+    .p-toast-message {
+      border-radius: 0.75rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      opacity: 1 !important;
+      backdrop-filter: none;
+    }
+  
+    .p-toast-message-success {
+      background-color: #22c55e !important;
+      color: #fff !important;
+    }
+  
+    .p-toast-message-danger {
+      background-color: #ef4444 !important;
+      color: #fff !important;
+    }
+  
+    .p-toast-message-icon {
+      color: #fff !important;
+    }
+  
+    .p-toast-message-content {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+  }
+  

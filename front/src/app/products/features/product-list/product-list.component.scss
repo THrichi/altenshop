@@ -1,0 +1,74 @@
+:host {
+    display: block;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  :host ::ng-deep .quantity-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  
+    .quantity-label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #555;
+      margin: 0;
+    }
+  }
+  
+  :host ::ng-deep .quantity-selector {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f8f9fa;
+    box-shadow: 0 0 0 1px #e0e0e0 inset;
+    transition: all 0.2s ease;
+  
+    &:hover {
+      box-shadow: 0 0 0 2px #c9f2d2 inset;
+      background: #ffffff;
+    }
+  
+    .p-inputnumber-button {
+      background: transparent !important;
+      border: none !important;
+      color: #2e7d32 !important;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border-radius: 8px;
+  
+      &:hover {
+        background: #e8f5e9 !important;
+        transform: scale(1.1);
+      }
+  
+      &:active {
+        background: #c8e6c9 !important;
+        transform: scale(0.95);
+      }
+    }
+  
+    .p-inputnumber-input {
+      width: 60px !important;
+      text-align: center;
+      border: none !important;
+      background: transparent !important;
+      font-size: 1rem !important;
+      font-weight: 500;
+      color: #333 !important;
+      outline: none !important;
+  
+      &:focus {
+        color: #1b5e20 !important;
+      }
+    }
+  }
+  

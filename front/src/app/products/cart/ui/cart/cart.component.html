@@ -1,0 +1,88 @@
+<section class="cart-page">
+    <header class="cart-header">
+      <h2>🛒 Mon Panier</h2>
+      <p class="subtitle">Modifiez vos quantités ou supprimez des articles avant de valider votre commande</p>
+    </header>
+  
+    @if (items().length === 0) {
+      <div class="cart-empty">
+        <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Panier vide" />
+        <h3>Votre panier est vide</h3>
+        <p>Ajoutez des produits à votre panier pour les voir ici.</p>
+        <p-button label="Continuer mes achats" icon="pi pi-arrow-left" severity="help" [routerLink]="['/products']" />
+      </div>
+    } @else {
+      <div class="cart-layout">
+        <div class="cart-items">
+          @for (item of items(); track item.productId) {
+            <div class="cart-row">
+              <div class="cart-image">
+                <img [src]="item.productImage" [alt]="item.productName" />
+              </div>
+  
+              <div class="cart-info">
+                <h3 class="cart-title">{{ item.productName }}</h3>
+                <p class="cart-desc">{{ item.productDescription }}</p>
+  
+                <div class="cart-meta">
+                  <span class="meta">
+                    Prix :
+                    <strong>{{ item.price | number:'1.2-2' }} €</strong>
+                  </span>
+  
+                  <div class="meta quantity-editor">
+                    <span>Quantité :</span>
+                    <input
+                      type="number"
+                      min="1"
+                      [max]="item.availableQuantity"
+                      class="cart-quantity-input"
+                      [value]="item.quantity"
+                      (input)="onQtyChange(item, $event)"
+                    />
+                  </div>
+                  
+  
+                  <span class="meta total">
+                    Sous-total :
+                    <strong>{{ item.total | number:'1.2-2' }} €</strong>
+                  </span>
+                </div>
+  
+                <div class="cart-actions">
+                  <p-button
+                    icon="pi pi-trash"
+                    label="Retirer"
+                    severity="danger"
+                    (onClick)="remove(item.productId)"
+                  />
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+  
+        <aside class="cart-summary">
+          <h3>Récapitulatif</h3>
+          <div class="summary-line">
+            <span>Total</span>
+            <strong>{{ total() | number:'1.2-2' }} €</strong>
+          </div>
+          <div class="summary-actions">
+            <p-button
+              label="Vider le panier"
+              icon="pi pi-trash"
+              severity="warning"
+              (onClick)="clear()"
+            />
+            <p-button
+              label="Procéder au paiement"
+              icon="pi pi-credit-card"
+              severity="success"
+            />
+          </div>
+        </aside>
+      </div>
+    }
+  </section>
+  

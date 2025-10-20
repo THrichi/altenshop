@@ -1,0 +1,44 @@
+<p-dialog
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{ width: '400px' }"
+  [contentStyle]="{ overflow: 'visible', padding: '1.5rem' }"
+  [header]="isLoginMode() ? 'Connexion' : 'Inscription'">
+
+  <div class="auth-form">
+
+    @if (!isLoginMode()) {
+      <input pInputText [(ngModel)]="username" type="text" placeholder="Nom d'utilisateur" />
+      <input pInputText [(ngModel)]="firstname" type="text" placeholder="Prénom" />
+    }
+
+    <input pInputText [(ngModel)]="email" type="email" placeholder="Email" />
+
+    <div class="relative">
+      <input
+        pInputText
+        [(ngModel)]="password"
+        [type]="showPassword ? 'text' : 'password'"
+        placeholder="Mot de passe" />
+      <button
+        type="button"
+        class="absolute right-2 top-2 text-sm text-blue-600"
+        (click)="showPassword = !showPassword">
+        {{ showPassword ? 'Cacher' : 'Afficher' }}
+      </button>
+    </div>
+
+    <p-button
+      [label]="isLoginMode() ? 'Se connecter' : 'Créer un compte'"
+      (onClick)="submit()"
+      severity="success" />
+
+    <a class="switch-mode" (click)="toggleMode()">
+      @if (isLoginMode()) { Créer un compte } @else { J’ai déjà un compte }
+    </a>
+
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+  </div>
+</p-dialog>
