@@ -1,6 +1,7 @@
 package com.application.altenshop.controllers;
 
 import com.application.altenshop.dtos.CartItemDTO;
+import com.application.altenshop.services.CartService;
 import com.application.altenshop.services.impl.CartServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CartController {
 
-    private final CartServiceImpl service;
+    private final CartService service;
 
     @GetMapping
     public ResponseEntity<List<CartItemDTO>> getCart(Authentication auth) {

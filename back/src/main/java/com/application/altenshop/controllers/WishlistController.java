@@ -1,6 +1,7 @@
 package com.application.altenshop.controllers;
 
 import com.application.altenshop.dtos.WishlistItemDTO;
+import com.application.altenshop.services.WishlistService;
 import com.application.altenshop.services.impl.WishlistServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WishlistController {
 
-    private final WishlistServiceImpl service;
+    private final WishlistService service;
 
     @GetMapping
     public ResponseEntity<List<WishlistItemDTO>> getWishlist(Authentication auth) {

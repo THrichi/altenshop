@@ -3,6 +3,7 @@ package com.application.altenshop.controllers;
 import com.application.altenshop.dtos.*;
 import com.application.altenshop.models.InventoryStatus;
 import com.application.altenshop.security.AdminGuard;
+import com.application.altenshop.services.ProductService;
 import com.application.altenshop.services.impl.ProductServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ProductController {
 
-    private final ProductServiceImpl service;
+    private final ProductService service;
     private final AdminGuard adminGuard;
 
     // Liste paginée + filtres (search, catégorie, statut, tri)

@@ -56,12 +56,15 @@ public class JWTService {
     }
 
     private Claims extractAllClaims(String token) {
-        // parse et valide la signature du token, puis retourne son payload
-        return Jwts.parser()
-                .verifyWith(getKey())
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
+        try {
+            return Jwts.parser()
+                    .verifyWith(getKey())
+                    .build()
+                    .parseSignedClaims(token)
+                    .getPayload();
+        } catch (ExpiredJwtException e) {
+            return e.getClaims(); // <— changement clé
+        }
     }
 
     public boolean validateToken(String token, UserDetails userDetails) {

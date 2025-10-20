@@ -2,8 +2,10 @@ package com.application.altenshop.controllers;
 
 import com.application.altenshop.dtos.*;
 import com.application.altenshop.models.User;
+import com.application.altenshop.services.AuthService;
 import com.application.altenshop.services.impl.AuthServiceImpl;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -12,14 +14,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
     private static final Logger log = LoggerFactory.getLogger(AuthController.class);
-    private final AuthServiceImpl authService;
+    private final AuthService authService;
 
-    public AuthController(AuthServiceImpl authService) {
-        this.authService = authService;
-    }
 
     @PostMapping("/account")
     public ResponseEntity<UserResponseDTO> register(@Valid @RequestBody UserRegisterDTO dto) {
